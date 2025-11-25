@@ -22,5 +22,14 @@ second -2
 - login and see if your data is coming properly
 - navbars should update and user login
 - reafactors our code to to add constant file + create a components folder
+- you should not access the router without login.
+- if token is not present redirect user to login.
+- logout features
+- Get the feed and add the feed into the store.
+- build the user card on the feed . 
+- edit the profile and add tost over there.
+
+episode -4
+
 
 

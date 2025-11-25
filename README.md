@@ -33,10 +33,10 @@ episode -4
 - new page - show all my connection ,
 - new page - show all my connection request
 - feature - accept/request connection request
+- create send accept and ingnore the connections.
+- create a sign up for user profile and and create a token for the new signup user.
+- create a cookies along side of user signup
+- test our application is everything fine or not.
 
-REMAINING:
-- signup 
-- send accept and ingnore the connections
-- End to end testing
 
 

@@ -6,7 +6,7 @@ import { addConnection } from "../utils/connectionSlice";
 import { removeRequests } from "../utils/requestSlice";
 
 const Requests = () => {
-  const requests = useSelector((store) => store.connection);
+  const requests = useSelector((store) => store.request);
   const dispatch = useDispatch();
   
 

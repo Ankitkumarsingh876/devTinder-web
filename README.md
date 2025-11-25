@@ -30,6 +30,13 @@ second -2
 - edit the profile and add tost over there.
 
 episode -4
+- new page - show all my connection ,
+- new page - show all my connection request
+- feature - accept/request connection request
 
+REMAINING:
+- signup 
+- send accept and ingnore the connections
+- End to end testing
 
 

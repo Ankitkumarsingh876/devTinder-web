@@ -2,8 +2,7 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
-import { addConnection } from "../utils/connectionSlice";
-import { removeRequests } from "../utils/requestSlice";
+import { addRequests, removeRequests } from "../utils/requestSlice";
 
 const Requests = () => {
   const requests = useSelector((store) => store.request);
@@ -31,7 +30,7 @@ const Requests = () => {
       const res = await axios.get(BASE_URL + "/user/request/recieved", {
         withCredentials: true,
       });
-      dispatch(addConnection(res.data.data));
+      dispatch(addRequests(res.data.data));
     } catch (err) {
       //will be handle herer.
     }
@@ -44,7 +43,7 @@ const Requests = () => {
   if (!requests) return;
 
   if (requests.length === 0)
-    return <h1 className="flex justify-center my-10">No connection founds</h1>;
+    return <h1 className="flex justify-center my-10">No Request founds!!</h1>;
 
   return (
     <div className="text-center my-10 ">
@@ -69,7 +68,7 @@ const Requests = () => {
               <h2 className="font-bold text-xl">
                 {firstName + " " + lastName}
               </h2>
-              {age && Gender && <p>{age + " " + Gender}</p>}
+              {age && Gender && <p>{age + ", " + Gender}</p>}
               <p>{about}</p>
             </div>
             <div>

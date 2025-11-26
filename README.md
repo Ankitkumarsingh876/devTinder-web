@@ -38,5 +38,15 @@ episode -4
 - create a cookies along side of user signup
 - test our application is everything fine or not.
 
+MISTAKES SOLVED:
+
+- all photoUrl update to right photoURL that's error .
+- also by mistake i write in profile request dispatch(addConnection) insteat of addRequest because
+     i want to update my request slice that's why.
+- and i update dummy image the previous one was not showing.
+- and some css to my card image to look cool.
+- change profile logo.
+- use some new user to test our API properly.
+
 
 

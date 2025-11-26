@@ -25,7 +25,7 @@ const Connections = () => {
 
   if (!connections) return;
 
-  if (connections.length === 0) return <h1>No connection founds</h1>;
+  if (connections.length === 0) return <h1 className="flex justify-center py-10">No connection founds!!</h1>;
 
   return (
     <div className="text-center my-10 ">
@@ -35,12 +35,12 @@ const Connections = () => {
           connection;
 
         return (
-          <div className="flex m-4 p-4 rounded-lg bg-base-200 w-1/2 mx-auto">
+          <div className="flex m-4 p-4 rounded-lg bg-base-200 w-1/2 mx-auto items-center">
             <div>
               <img alt="photo" className="w-20 h-20 rounded-full" src={photoURL} />
             </div>
-            <div>
-              <h2 className="font-bold text-xl">{firstName + " " + lastName}</h2>
+            <div className="ml-4 text-center w-full">
+              <h2 className="font-bold  text-xl">{firstName + " " + lastName}</h2>
               {age && Gender && <p>{age + " " + Gender}</p>}
               <p>{about}</p>
             </div>

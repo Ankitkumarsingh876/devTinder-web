@@ -8,7 +8,7 @@ import { addUser } from "../utils/userSlice";
 export const EditProfile = ({ user }) => {
   const [firstName, setFirstName] = useState(user.firstName);
   const [lastName, setLastName] = useState(user.lastName);
-  const [photoURL, setPhotoURL] = useState(user.photoURL);
+  const [photoURL, setphotoURL] = useState(user.photoURL);
   const [age, setAge] = useState(user.age || "");
   const [Gender, setGender] = useState(user.Gender || "");
   const [error, setError] = useState("");
@@ -23,7 +23,7 @@ export const EditProfile = ({ user }) => {
         {
           firstName,
           lastName,
-          photoUrl: photoURL,
+          photoURL,
           age,
           Gender,
         },
@@ -77,7 +77,7 @@ export const EditProfile = ({ user }) => {
                     type="text"
                     value={photoURL}
                     className="input input-bordered w-full max-w-xs"
-                    onChange={(e) => setPhotoURL(e.target.value)}
+                    onChange={(e) => setphotoURL(e.target.value)}
                   />
                 </label>
                 <label className="form-control w-full max-w-xs my-2">

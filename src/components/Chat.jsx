@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { createSocketConnection } from "../utils/socket";
+import axios from "axios";
+import { BASE_URL } from "../utils/constants";
 
 const Chat = () => {
   const { targetUserId } = useParams();
@@ -11,6 +13,28 @@ const Chat = () => {
   const user = useSelector((store) => store.user);
   const userId = user?._id;
 
+  const fetchChatMessage = async () => {
+    const chat = await axios.get(BASE_URL+ "/chat/" + targetUserId, {
+      withCredentials: true
+    })
+    console.log(chat.data.messages);
+
+    const chatMessages = chat?.data?.messages?.map((msg) => {
+      const {senderId, text} = msg;
+      return {
+        firstName: senderId?.firstName,
+        lastName: senderId?.lastName,
+        text,
+      }
+    });
+    setMessage(chatMessages);
+  };
+
+  useEffect(() => {
+    fetchChatMessage();
+
+  },[])
+
   useEffect(()=> {
     if(!userId) {
         return;
@@ -18,9 +42,9 @@ const Chat = () => {
     const socket = createSocketConnection();
     socket.emit("joinChat", {firstName: user.firstName, userId, targetUserId});
 
-    socket.on("messageReceived", ({firstName, text}) => {
+    socket.on("messageReceived", ({firstName,lastName, text}) => {
         console.log(firstName + " " + text);
-        setMessage((message) => [...message, {firstName,text}]);
+        setMessage((message) => [...message, {firstName, lastName, text}]);
     })
 
     return () => {
@@ -46,9 +70,9 @@ const Chat = () => {
       <div className="flex-1 overflow-scroll p-5 ">
         {message.map((mssg, index) => {
           return (
-            <div key={index} className="chat chat-start">
+            <div key={index} className={"chat "+ (user.firstName === mssg.firstName ? "chat-end": "chat-start")}>
               <div className="chat-header">
-                {mssg.firstName}
+                {` ${mssg.firstName} ${mssg.lastName}`}
                 <time className="text-xs opacity-50">2 hours ago</time>
               </div>
               <div className="chat-bubble">{mssg.text}</div>

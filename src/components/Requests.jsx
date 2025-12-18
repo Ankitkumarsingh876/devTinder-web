@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import React, { useEffect } from "react";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +11,7 @@ const Requests = () => {
 
   const reviewRequest = async (status, _id) => {
     try {
-      const res = await axios.post(
+      const res = await axiosInstance.post(
         BASE_URL + "/request/review/" + status + "/" + _id,
         {},
         {
@@ -27,7 +27,7 @@ const Requests = () => {
 
   const fetchRequest = async () => {
     try {
-      const res = await axios.get(BASE_URL + "/user/request/recieved", {
+      const res = await axiosInstance.get(BASE_URL + "/user/request/recieved", {
         withCredentials: true,
       });
       dispatch(addRequests(res.data.data));

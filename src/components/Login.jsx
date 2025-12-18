@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
@@ -17,7 +17,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post(
+      const res = await axiosInstance.post(
         BASE_URL + "/login",
         {
           email: emailId,
@@ -38,7 +38,7 @@ const Login = () => {
 
   const handleSignUp = async () => {
     try{
-      const res = await axios.post(BASE_URL+ "/signup",{
+      const res = await axiosInstance.post(BASE_URL+ "/signup",{
         firstName,
         lastName,
         email:emailId,

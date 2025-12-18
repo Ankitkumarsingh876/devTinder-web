@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axiosInstance from '../utils/axiosInstance'
 import React, { useEffect } from 'react'
 import { BASE_URL } from '../utils/constants'
 import { useDispatch, useSelector } from 'react-redux'
@@ -14,7 +14,7 @@ const Feed = () => {
   const feedUser = async () => {
     if(feed) return;
     try{
-    const res = await axios.get(BASE_URL + "/feed", {
+    const res = await axiosInstance.get(BASE_URL + "/feed", {
       withCredentials: true,
     })
     dispatch(addFeed(res.data));

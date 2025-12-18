@@ -49,4 +49,17 @@ MISTAKES SOLVED:
 - use some new user to test our API properly.
 
 
+it will be use for Create AWS EC2 engine for deployement.
 
+import io from "socket.io-client";
+import { BASE_URL } from "./constants"
+
+
+export const createSocketConnection = () => {
+    if(location.hostname === "localhost"){
+        return io(BASE_URL);
+    }else{
+        return io("/", {path: "/api/socket.io"})
+    }
+    
+}

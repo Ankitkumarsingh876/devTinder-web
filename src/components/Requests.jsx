@@ -12,11 +12,9 @@ const Requests = () => {
   const reviewRequest = async (status, _id) => {
     try {
       const res = await axiosInstance.post(
-        BASE_URL + "/request/review/" + status + "/" + _id,
+       "/request/review/" + status + "/" + _id,
         {},
-        {
-          withCredentials: true,
-        }
+        
       );
       dispatch(removeRequests(_id));
 
@@ -27,9 +25,7 @@ const Requests = () => {
 
   const fetchRequest = async () => {
     try {
-      const res = await axiosInstance.get(BASE_URL + "/user/request/recieved", {
-        withCredentials: true,
-      });
+      const res = await axiosInstance.get("/user/request/recieved");
       dispatch(addRequests(res.data.data));
     } catch (err) {
       //will be handle herer.

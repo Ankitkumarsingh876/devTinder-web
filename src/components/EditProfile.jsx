@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { UserCard } from "./UserCard";
 import axiosInstance from "../utils/axiosInstance";
-import { BASE_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 
@@ -19,7 +18,7 @@ export const EditProfile = ({ user }) => {
     setError("");
     try {
       const res = await axiosInstance.patch(
-        BASE_URL + "/profile/edit",
+       "/profile/edit",
         {
           firstName,
           lastName,
@@ -27,7 +26,6 @@ export const EditProfile = ({ user }) => {
           age,
           Gender,
         },
-        { withCredentials: true }
       );
       dispatch(addUser(res?.data?.data));
       setShowToast(true);
